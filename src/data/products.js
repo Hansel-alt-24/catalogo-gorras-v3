@@ -3,7 +3,7 @@ export const products = [
       id: 1,
       name: "RANCH LIFE",
       description: "Gorra ajustable, bordadada, calidad AAA+ (No incluye envío).",
-      price: 150.0,
+      price: 125.0,
       available: true,
       images: [
         "/GORRA1.jpg",
@@ -29,7 +29,7 @@ export const products = [
         id: 3,
         name: "FARMER´S STORY",
         description: "Gorra ajustable, bordada, calidad AAA+ (No incluye envío).",
-        price: 120.0,
+        price: 125.0,
         available: true,
         images: [
           "/GORRA3.jpg",
