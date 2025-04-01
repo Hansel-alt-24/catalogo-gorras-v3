@@ -18,11 +18,13 @@ h1, h2 {
 
 .catalogo {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
+  padding: 1rem;
 }
 
+/* Tarjetas de productos */
 .card {
   background: white;
   padding: 1rem;
@@ -36,53 +38,21 @@ h1, h2 {
   transform: scale(1.02);
 }
 
-.card img {
-  max-width: 100%;
-  border-radius: 1rem;
+.card h2 {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
 }
 
-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  color: white;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  margin: 0.25rem;
+.card p {
+  margin: 0.3rem 0;
 }
 
-.disponible {
-  color: green;
-}
-
-.agotado {
-  color: red;
-}
-
-.eliminar {
-  background-color: #c0392b;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-form input,
-form select {
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-form button {
-  background-color: #333;
-}
-imagenes {
+/* Imágenes del producto */
+.imagenes {
   display: flex;
   overflow-x: auto;
   gap: 0.75rem;
-  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  padding: 0.75rem;
   scroll-snap-type: x mandatory;
   justify-content: center;
 }
@@ -103,6 +73,52 @@ imagenes {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Botones de acción */
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin: 0.25rem;
+  font-weight: bold;
+}
+
+.eliminar {
+  background-color: #c0392b;
+}
+
+button:not(.eliminar) {
+  background-color: #333;
+}
+
+.disponible {
+  color: green;
+}
+
+.agotado {
+  color: red;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+form input,
+form select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #333;
+}
+
+/* Lightbox */
 .lightbox {
   position: fixed;
   top: 0;
@@ -122,4 +138,48 @@ imagenes {
   border-radius: 1rem;
   box-shadow: 0 0 20px white;
   transition: transform 0.3s ease;
+}
+
+/* Botones de categoría */
+.categorias {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.categorias button {
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  color: #333;
+}
+
+.categorias button:hover {
+  background-color: #ddd;
+}
+
+.categorias .activo {
+  background-color: #333;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .catalogo {
+    grid-template-columns: 1fr;
+  }
+
+  .imagenes img {
+    height: 160px;
+  }
+
+  .card {
+    padding: 0.8rem;
+  }
 }

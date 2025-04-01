@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { products as initialProducts } from "../data/products";
 
-const isEditMode = false; // Cambia a false para que otros usuarios no puedan editar
+const isEditMode = false; // Cambiar a true para editar desde la página
 
 export default function ProductGallery() {
   const [products, setProducts] = useState(() => {
@@ -16,6 +16,10 @@ export default function ProductGallery() {
   });
 
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const [visibleCount, setVisibleCount] = useState(12);
+
+  const categories = ["Todas", ...new Set(products.map((p) => p.category))];
 
   useEffect(() => {
     try {
@@ -45,6 +49,7 @@ export default function ProductGallery() {
       price: parseFloat(form.price.value),
       available: form.available.value === "true",
       images: form.images.value.split(",").map((img) => img.trim()),
+      category: form.category.value,
       currency: "Q",
     };
     setProducts((prev) => [...prev, newProduct]);
@@ -53,11 +58,33 @@ export default function ProductGallery() {
 
   const closeImage = () => setSelectedImage(null);
 
+  const filteredProducts = products.filter(
+    (p) => selectedCategory === "Todas" || p.category === selectedCategory
+  );
+
   return (
     <div className="container">
       <h1>Catálogo de Gorras</h1>
+
+      {/* Botones de categoría */}
+      <div className="categorias">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => {
+              setSelectedCategory(cat);
+              setVisibleCount(12); // reiniciar vista al cambiar categoría
+            }}
+            className={selectedCategory === cat ? "activo" : ""}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Catálogo */}
       <div className="catalogo">
-        {products.map((p) => (
+        {filteredProducts.slice(0, visibleCount).map((p) => (
           <div key={p.id} className="card">
             <div className="imagenes">
               {p.images.map((img, index) => (
@@ -93,6 +120,16 @@ export default function ProductGallery() {
         ))}
       </div>
 
+      {/* Botón Ver más */}
+      {visibleCount < filteredProducts.length && (
+        <div style={{ textAlign: "center", marginTop: "1rem" }}>
+          <button onClick={() => setVisibleCount((prev) => prev + 12)}>
+            Ver más
+          </button>
+        </div>
+      )}
+
+      {/* Formulario de agregar */}
       {isEditMode && (
         <>
           <h2>Agregar Nueva Gorra</h2>
@@ -101,6 +138,7 @@ export default function ProductGallery() {
             <input name="description" placeholder="Descripción" required />
             <input name="price" type="number" step="0.01" placeholder="Precio" required />
             <input name="images" placeholder="URL(s) de imagen (separadas por coma)" required />
+            <input name="category" placeholder="Categoría" required />
             <select name="available">
               <option value="true">Disponible</option>
               <option value="false">Agotado</option>
@@ -110,7 +148,7 @@ export default function ProductGallery() {
         </>
       )}
 
-      {/* Visor emergente de imagen */}
+      {/* Lightbox de imagen */}
       {selectedImage && (
         <div className="lightbox" onClick={closeImage}>
           <img src={selectedImage} alt="Vista ampliada" />
@@ -118,4 +156,4 @@ export default function ProductGallery() {
       )}
     </div>
   );
-}
+} 

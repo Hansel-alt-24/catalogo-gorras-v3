@@ -1,41 +1,68 @@
 export const products = [
-    {
-      id: 1,
-      name: "RANCH LIFE",
-      description: "Gorra ajustable, bordadada, calidad AAA+ (No incluye envío).",
-      price: 125.0,
-      available: true,
-      images: [
-        "/GORRA1.jpg",
-        "/GORRA1.2.jpg",
-        "/GORRA1.3.jpg"
-      ],
-      currency: "Q"
-    },
-    {
-      id: 2,
-      name: "VIEJO OESTE",
-      description: "Gorra ajustable, bordada, calidad AA+ (No incluye envío).",
-      price: 80.0,
-      available: true,
-      images: [
-        "/GORRA2.jpg",
-        "/GORRA2.1 (2).jpg",
-        "/GORRA2.3.jpg"
-      ],
-      currency: "Q"
-    },
-    {
-        id: 3,
-        name: "FARMER´S STORY",
-        description: "Gorra ajustable, bordada, calidad AAA+ (No incluye envío).",
-        price: 125.0,
-        available: true,
-        images: [
-          "/GORRA3.jpg",
-          "/GORRA3.2.jpg",
-          "/GORRA3.3.jpg"
-        ],
-        currency: "Q"
-      }
-  ];
+
+  {
+    id: 1,
+    name: "GORRA RUNNER",
+    description: "Gorra ajustable, bordada. (No incluye envío)",
+    price: 120,
+    available: true,
+    category: "Deportivas",
+    images: ["/example.jpg"],
+    currency: "Q"
+  },
+
+  {
+    id: 2,
+    name: "GORRA SPEED",
+    description: "Gorra ajustable, bordada. (No incluye envío)",
+    price: 130,
+    available: true,
+    category: "Deportivas",
+    images: ["/example.jpg"],
+    currency: "Q"
+  },
+
+  {
+    id: 3,
+    name: "GORRA STREET",
+    description: "Gorra ajustable, bordada. (No incluye envío)",
+    price: 110,
+    available: true,
+    category: "Urbanas",
+    images: ["/example.jpg"],
+    currency: "Q"
+  },
+
+  {
+    id: 4,
+    name: "GORRA BOLD",
+    description: "Gorra ajustable, bordada. (No incluye envío)",
+    price: 115,
+    available: true,
+    category: "Urbanas",
+    images: ["/example.jpg"],
+    currency: "Q"
+  },
+
+  {
+    id: 5,
+    name: "GORRA RELAX",
+    description: "Gorra ajustable, bordada. (No incluye envío)",
+    price: 100,
+    available: true,
+    category: "Casuales",
+    images: ["/example.jpg"],
+    currency: "Q"
+  },
+
+  {
+    id: 6,
+    name: "GORRA CHILL",
+    description: "Gorra ajustable, bordada. (No incluye envío)",
+    price: 105,
+    available: true,
+    category: "Casuales",
+    images: ["/example.jpg"],
+    currency: "Q"
+  },
+];
