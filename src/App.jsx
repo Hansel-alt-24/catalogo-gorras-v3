@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Gorras Keris Men’s</h1>
+      <h1>Gorras Barón Caps</h1>
       <ProductGallery />
     </div>
   );
